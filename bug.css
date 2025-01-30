@@ -1,0 +1,23 @@
+The following CSS code snippet demonstrates an uncommon error related to the specificity of CSS selectors:
+
+```css
+div {
+  color: blue;
+}
+
+.special-class div {
+  color: red;
+}
+
+#specific-id div {
+  color: green;
+}
+
+div#specific-id {
+  color: purple;
+}
+```
+
+The issue arises from the combination of class selectors, ID selectors, and the order of declarations. The specificity of CSS selectors determines which style rule is applied when multiple rules conflict.  The `div#specific-id` selector is very specific and overrides all the other styles.
+
+This is subtle because it's not immediately obvious which selector will win. Developers might expect the `#specific-id div` to win due to its ID selector; however, the `div#specific-id` selector is even more specific because it's a single element that matches the ID and type selector which beats the combination of class/element selectors.
